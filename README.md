@@ -1,73 +1,133 @@
-# React + TypeScript + Vite
+# Listora — Task Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-grade task management dashboard built with React, TypeScript, and Tailwind CSS. Features full light/dark mode theming, real-time filtering, priority tracking, and a live progress indicator.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4.0-06B6D4?style=flat&logo=tailwindcss)
+![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=flat&logo=vite)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> Add your deployed link here (Vercel / Netlify)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Screenshots
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Dark Mode | Light Mode |
+|-----------|------------|
+| *(add screenshot)* | *(add screenshot)* |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Features
+
+- **Add Tasks** — Create tasks with a title, priority level (Low / Medium / High), and status (Pending / Completed)
+- **Filter Tasks** — Filter by priority and status using interactive chip buttons
+- **Toggle Status** — Mark tasks complete or revert them to pending with a single click
+- **Delete Tasks** — Remove tasks with a hover-reveal trash icon
+- **Progress Bar** — Live completion rate calculated from current tasks
+- **Stats Cards** — At-a-glance totals for all tasks, completed, pending, and high priority
+- **Dark / Light Mode** — Full theme toggle with separate styling for each mode, preference saved to localStorage
+- **Responsive Layout** — Two-column layout on desktop, stacked on mobile
+
+---
+
+## Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| React 19 | UI framework with hooks |
+| TypeScript | Type safety across all components |
+| Tailwind CSS v4 | Utility-first styling |
+| Vite | Build tool and dev server |
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── TaskForm.tsx       # Add new task form
+│   ├── TaskCard.tsx       # Individual task card with status toggle
+│   ├── TaskList.tsx       # Renders list of TaskCards
+│   ├── FilterBar.tsx      # Priority & status filter chips
+│   └── ThemeToggle.tsx    # Dark/light mode toggle
+├── types/
+│   └── task.ts            # Task interface definition
+└── App.tsx                # Root component, state management
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/listora.git
+
+# Navigate into the project
+cd listora
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## How It Works
+
+### State Management
+
+All task state lives in `App.tsx` and is passed down via props — no external state library needed. This keeps the data flow explicit and easy to follow.
+
+```
+App.tsx (tasks state)
+  ├── TaskForm     → adds tasks via setTasks
+  ├── FilterBar    → reads/sets filter state
+  └── TaskList
+        └── TaskCard  → calls updateTaskStatus / onDelete
+```
+
+### Dark Mode
+
+Tailwind's `darkMode: "class"` strategy is used. `ThemeToggle` adds or removes the `dark` class on `<html>`, which activates all `dark:` utility classes throughout the app. The user's preference is persisted in `localStorage`.
+
+### Filtering
+
+Tasks are filtered in `App.tsx` before being passed to `TaskList`. Priority and status filters are applied with `Array.filter()` — both filters combine with AND logic so users can narrow by both dimensions simultaneously.
+
+---
+
+## Author
+
+Built by **[Your Name]**  
+[GitHub](https://github.com/your-username) · [LinkedIn](https://linkedin.com/in/your-profile) · [Portfolio](https://yourportfolio.com)
+
+---
+
+## License
+
+MIT License — feel free to use this project as a reference or template.
