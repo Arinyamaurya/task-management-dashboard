@@ -1,4 +1,4 @@
-# Listora — Task Management Dashboard
+# Outliner — Task Management Dashboard
 
 A production-grade task management dashboard built with React, TypeScript, and Tailwind CSS. Features full light/dark mode theming, real-time filtering, priority tracking, and a live progress indicator.
 
@@ -11,7 +11,7 @@ A production-grade task management dashboard built with React, TypeScript, and T
 
 ## Live Demo
 
-> Add your deployed link here (Vercel / Netlify)
+🔗 [task-management-dashboard-beta-inky.vercel.app](https://task-management-dashboard-beta-inky.vercel.app/)
 
 ---
 
@@ -19,7 +19,7 @@ A production-grade task management dashboard built with React, TypeScript, and T
 
 | Dark Mode | Light Mode |
 |-----------|------------|
-| *(add screenshot)* | *(add screenshot)* |
+| ![Dark Mode](screenshots/dark.png) | ![Light Mode](screenshots/light.png) |
 
 ---
 
@@ -75,10 +75,10 @@ src/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/listora.git
+git clone https://github.com/Arinyamaurya/task-management-dashboard.git
 
 # Navigate into the project
-cd listora
+cd task-management-dashboard
 
 # Install dependencies
 npm install
@@ -123,8 +123,8 @@ Tasks are filtered in `App.tsx` before being passed to `TaskList`. Priority and 
 
 ## Author
 
-Built by **[Your Name]**  
-[GitHub](https://github.com/your-username) · [LinkedIn](https://linkedin.com/in/your-profile) · [Portfolio](https://yourportfolio.com)
+Built by **Arinya Maurya**
+[GitHub](https://github.com/Arinyamaurya)
 
 ---
 
